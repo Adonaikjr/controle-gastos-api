@@ -13,13 +13,13 @@ export class entrada_controller {
 
     try {
       const entrada = await entradaModel.createModel({
-        value,
         description,
         userId,
+        value
       });
       return res.json({ entrada });
     } catch (error) {
-      throw new Error("não foi possivel gravar");
+      return res.status(500).json({ error: "Não foi possível gravar a entrada." });
     }
   }
 

@@ -22,6 +22,7 @@ model Entrada {
   value       Int
   description String
   userId      Int
+  createdAt   DateTime @default(now())
 }
 
 model Despesa {
@@ -29,6 +30,7 @@ model Despesa {
   valueDesp   Int
   description String
   userId      Int
+  createdAt   DateTime @default(now())
 }
 
 model Client {
@@ -36,6 +38,7 @@ model Client {
   valueClient Int
   description String
   userId      Int
+  createdAt   DateTime @default(now())
 }
 
 model Fornecedores {
@@ -43,4 +46,5 @@ model Fornecedores {
   valueFornec Int
   description String
   userId      Int
+  createdAt   DateTime @default(now())
 }

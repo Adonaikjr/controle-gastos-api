@@ -23,4 +23,8 @@ export class DespModel {
       await prisma.$disconnect();
     }
   }
+  async findById() {
+    const allResult = await prisma.despesa.findMany();
+    return allResult;
+  }
 }

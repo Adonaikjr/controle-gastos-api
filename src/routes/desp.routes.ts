@@ -5,6 +5,7 @@ const despRoutes = Router();
 
 const despController = new desp_controller()
 
-despRoutes.post("/", authenticateToken, despController.create );
+despRoutes.post("/", authenticateToken, despController.create);
+despRoutes.get("/", authenticateToken, despController.show);
 
 export { despRoutes };

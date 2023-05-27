@@ -40,7 +40,7 @@ export class user_controller {
         email,
         password,
       });
-      return res.json({newLogin}) 
+      return res.json(newLogin) 
     } catch (error) {
       throw new Error(`erro: ${error}`)
     }

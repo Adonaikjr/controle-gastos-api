@@ -16,12 +16,11 @@ export class EntradaModel {
           userId: userProps.userId,
         },
       });
-
       return result;
     } catch (error) {
-      throw new Error(`Erro ao cadastrar.${error}`);
+      throw error
     } finally {
-      await prisma.$disconnect();
+       prisma.$disconnect();
     }
   }
   async findById() {
