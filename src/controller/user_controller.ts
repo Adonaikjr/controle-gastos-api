@@ -17,7 +17,7 @@ export class user_controller {
       const user = await userModel.createUser({ name, email, password });
 
       return res.status(201).json({ user });
-      
+
     } catch (err) {
       console.error(err);
       return res.status(500).json({ error: "Internal server error" });
@@ -40,9 +40,35 @@ export class user_controller {
         email,
         password,
       });
-      return res.json(newLogin) 
+      return res.json(newLogin)
     } catch (error) {
       throw new Error(`erro: ${error}`)
+    }
+  }
+  async updateAvatar(req: Request, res: Response) {
+    const { userId } = req.body
+    if (!req.file) {
+      throw new Error('Error upload file')
+    } else {
+      try {
+        const { originalname, filename: banner } = req.file;
+        const result = await userModel.createImage({
+          Image: banner,
+          userId: parseInt(userId),
+        })
+        return res.json(result)
+      } catch (error) {
+        console.log(error)
+      }
+
+    }
+  }
+  async listImage(req: Request, res: Response) {
+    try {
+      const image = await userModel.findByImage()
+      return res.json(image)
+    } catch (error) {
+      console.log(error)
     }
   }
 }

@@ -12,10 +12,15 @@ interface typePropsLogin {
   email: string;
   password: string;
 }
+interface typePropsImage {
+  userId: number
+  Image: string
 
+}
 export class ModelApp {
   async createUser(userProps: UserProps) {
     const hashedPass = await hashPassword(userProps.password);
+  
     try {
       const result = await prisma.user.create({
         data: {
@@ -59,6 +64,28 @@ export class ModelApp {
       throw new Error("email ou senha invalidos");
     } finally {
       await prisma.$disconnect();
+    }
+  }
+
+
+  async findByImage() {
+    const image = await prisma.image.findMany()
+    return image
+  }
+
+  async createImage(props: typePropsImage) {
+    try {
+      const result = await prisma.image.create({
+        data: {
+          userId: props.userId,
+          Image: props.Image
+        },
+      });
+      return result;
+    } catch (error) {
+      throw new Error(`Erro ao cadastrar.${error}`);
+    } finally {
+      await prisma.$disconnect()
     }
   }
 }

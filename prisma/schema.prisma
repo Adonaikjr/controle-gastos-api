@@ -17,8 +17,14 @@ model User {
   password String
 }
 
+model Image {
+  id     Int    @id @default(autoincrement())
+  userId Int
+  Image  String
+}
+
 model Entrada {
-  id          Int    @id @default(autoincrement())
+  id          Int      @id @default(autoincrement())
   value       Int
   description String
   userId      Int
@@ -26,7 +32,7 @@ model Entrada {
 }
 
 model Despesa {
-  id          Int    @id @default(autoincrement())
+  id          Int      @id @default(autoincrement())
   valueDesp   Int
   description String
   userId      Int
@@ -34,7 +40,7 @@ model Despesa {
 }
 
 model Client {
-  id          Int    @id @default(autoincrement())
+  id          Int      @id @default(autoincrement())
   valueClient Int
   description String
   userId      Int
@@ -42,7 +48,7 @@ model Client {
 }
 
 model Fornecedores {
-  id          Int    @id @default(autoincrement())
+  id          Int      @id @default(autoincrement())
   valueFornec Int
   description String
   userId      Int
