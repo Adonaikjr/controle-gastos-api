@@ -28,4 +28,12 @@ export class desp_controller {
       return res.status(500).json({ error: "Internal server error" });
     }
   }
+
+  async Delete(req: Request, res: Response) {
+    try {
+      
+    } catch (error) {
+      
+    }
+  }
 }

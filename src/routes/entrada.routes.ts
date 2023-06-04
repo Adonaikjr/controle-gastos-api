@@ -8,5 +8,5 @@ const entradaController = new entrada_controller();
 
 entradaRoutes.post("/", authenticateToken, entradaController.create);
 entradaRoutes.get("/", authenticateToken, entradaController.show )
-
+entradaRoutes.delete('/delete/:id', authenticateToken, entradaController.Delete)
 export { entradaRoutes };

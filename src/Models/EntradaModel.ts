@@ -6,6 +6,7 @@ interface UserProps {
   userId: any;
 }
 
+
 export class EntradaModel {
   async createModel(userProps: UserProps) {
     try {
@@ -26,5 +27,20 @@ export class EntradaModel {
   async findById() {
     const allResult = await prisma.entrada.findMany();
     return allResult;
+  }
+  async DeleteEntrada(id:any) {
+   try {
+     const deleteEntrada = await prisma.entrada.delete({
+       where: {
+         id: id
+       },
+     })
+     console.log(deleteEntrada)
+     return deleteEntrada
+   } catch (error) {
+    throw error
+   } finally {
+     prisma.$disconnect();
+   }
   }
 }

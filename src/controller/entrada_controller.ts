@@ -6,6 +6,7 @@ interface TypeCreateEntrada {
   description: string;
   userId: any;
 }
+
 const entradaModel = new EntradaModel()
 export class entrada_controller {
   async create(req: Request, res: Response) {
@@ -31,6 +32,17 @@ export class entrada_controller {
     } catch (err) {
       console.error(err);
       return res.status(500).json({ error: "Internal server error" });
+    }
+  }
+
+  async Delete(req: Request, res: Response) {
+    const { id } = req.params
+    try {
+      const deleteEntrada = await entradaModel.DeleteEntrada(parseInt(id))
+      return res.json(deleteEntrada)
+    } catch (error) {
+      console.log(error)
+      return res.status(500).json({ error: "Não foi possível deletar a entrada."});
     }
   }
 }

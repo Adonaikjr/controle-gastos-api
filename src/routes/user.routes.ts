@@ -13,6 +13,6 @@ userRoutes.post("/login", userController.Session);
 userRoutes.get("/", authenticateToken, userController.show);
 userRoutes.post('/avatar', upload.single('file'), userController.updateAvatar)
 userRoutes.get('/avatar', userController.listImage)
-
+userRoutes.delete('/avatar/:id', userController.Delete)
 
 export { userRoutes };

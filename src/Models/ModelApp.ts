@@ -88,4 +88,20 @@ export class ModelApp {
       await prisma.$disconnect()
     }
   }
+
+  async DeleteImage(id: any) {
+    try {
+      const deletImage = await prisma.image.delete({
+        where: {
+          id: id
+        },
+      })
+      return deletImage
+    } catch (error) {
+      throw error
+    } finally {
+      prisma.$disconnect();
+    }
+  }
+
 }

@@ -26,7 +26,7 @@ export class user_controller {
   async show(req: Request, res: Response) {
     try {
       const user = await userModel.findById();
-      console.log(user);
+      // console.log(user);
       return res.json({ user });
     } catch (err) {
       console.error(err);
@@ -69,6 +69,17 @@ export class user_controller {
       return res.json(image)
     } catch (error) {
       console.log(error)
+    }
+  }
+
+  async Delete(req: Request, res: Response) {
+    const { id } = req.params
+    try {
+      const deleteImage = await userModel.DeleteImage(parseInt(id))
+      return res.json(deleteImage)
+    } catch (error) {
+      console.log(error)
+      return res.status(500).json({ error: "Não foi possível deletar a imagem." });
     }
   }
 }
